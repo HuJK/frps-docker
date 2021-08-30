@@ -15,28 +15,18 @@ docker buildx use mybuilder_az
 
 Build
 ```bash
-#In this case, we use "ubuntu-test" as image name. you can use wathever you want.
-docker buildx build  --platform linux/arm64,linux/amd64 -t whojk/git-sync . --output="type=docker"
+docker buildx build  --platform linux/amd64 -t whojk/git-sync . --output="type=docker"
 docker push whojk/git-sync
 
 #Test in localhost
-docker run -it ubuntu-test
+docker run -it --rm --env-file=env_file_example --name=gitsync whojk/git-sync
 ```
 
-## How to use it:
-Upload to the docker hub, and deploy it to azure app service
-![Azure deploy example](https://i.imgur.com/uox9lwO.png)
-
-## Boot order
-1. /etc/init.d/rcS
-2. /etc/rc.local
-3. all services stored at /etc/sv
 
 ## Environment Variables
 
 1. `APT_UPDATE` : `0/1`, run `apt update` at startup
 1. `APT_UPGRADE` : `0/1`, run `apt upgrade` at startup
-
 1. Git syncing related variables.
     1. `GIT_SSH_KEY`
     1. `GIT_EMAIL` 

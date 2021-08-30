@@ -6,5 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 echo "Install & update"
 apt-get -y update
 apt-get -y dist-upgrade
-apt-get -y install runit locales cron vim git build-essential rsync
+apt-get -y runit locales git rsync
+#delete self
+rm /tmp/install_syncer.sh
 exit 0

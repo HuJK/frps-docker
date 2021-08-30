@@ -10,9 +10,11 @@ export GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChec
 git config --global user.email $GIT_EMAIL
 git config --global user.name $GIT_NAME
 
-if [[ ! -e /git_sync_dir/.git ]]; then
-	git clone $GIT_REPO_URL /git_temp
-	mv /git_temp/.git /git_sync_dir
+if [ -z "$(ls -A /git_sync_dir)" ]; then
+    git clone $GIT_REPO_URL /git_sync_dir
+elif [[ ! -e /git_sync_dir/.git ]]; then
+    git clone $GIT_REPO_URL /git_temp
+    mv /git_temp/.git /git_sync_dir
 fi
 
 cd /git_sync_dir
