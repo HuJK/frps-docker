@@ -28,7 +28,7 @@ docker run -it --rm --env-file=env_file_example --name=gitsync whojk/git-sync
 1. `APT_UPDATE` : `0/1`, run `apt update` at startup
 1. `APT_UPGRADE` : `0/1`, run `apt upgrade` at startup
 1. Git syncing related variables.
-    1. `GIT_SSH_KEY`
+    1. `GIT_SSH_KEY` : replace newline to "\n" 
     1. `GIT_EMAIL` 
     1. `GIT_NAME` 
     1. `GIT_REPO_URL` 
