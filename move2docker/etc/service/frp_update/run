@@ -30,6 +30,7 @@ if [[ "$FRP_UPDATE" == 1 ]]; then
     chmod 755 /bin/fp-multiuser
     sv restart frps
     sv restart frpsmultiuser
+    sleep $FRP_UPDATE_INTERVAL
 else
   echo "frp_update not enabled, frps down"
   sv dowwn frp_update
