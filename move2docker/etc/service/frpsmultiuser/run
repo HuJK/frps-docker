@@ -1,0 +1,13 @@
+#!/bin/bash
+. /.denv
+if [[ "$FRPS" == 1 ]]; then
+  echo "frps enabled, start frps-multiuser"
+  env | grep FRP_USER_ > /etc/frp/usertokens
+  sed 's/.........^//'
+  echo fp-multiuser -l 127.0.0.1:7200 -f /etc/frp/usertokens
+  fp-multiuser -l 127.0.0.1:7200 -f /etc/frp/usertokens
+else
+  echo "frps not enabled, frps down"
+  sv dowwn frpsmultiuser
+  sleep infinity
+fi
