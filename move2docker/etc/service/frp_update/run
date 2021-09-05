@@ -1,0 +1,37 @@
+#!/bin/bash
+. /.denv
+if [[ "$FRP_UPDATE" == 1 ]]; then
+    cd /tmp
+    echo "###doenload latest frp###"
+    curl -s https://api.github.com/repos/fatedier/frp/releases/latest \
+    | grep "browser_download_url.*linux_${cpu_arch}.tar.gz" \
+    | cut -d : -f 2,3 \
+    | tr -d \" \
+    | wget -i - -O frp.tar.gz
+
+    echo "###unzip frp.tar.gz###"
+    mkdir frp
+    tar xzvf frp.tar.gz -C frp
+    mv frp/*/* frp/
+    mv frp/frps /bin/frps
+    mv frp/frpc /bin/frpc
+    chmod 755 /bin/frps
+    chmod 755 /bin/frpc
+    rm -rf frp
+    rm -rf frp.tar.gz
+
+    echo "###doenload latest frp-multiuser###"
+    curl -s https://api.github.com/repos/gofrp/fp-multiuser/releases/latest \
+    | grep "browser_download_url.*linux-${cpu_arch}" \
+    | cut -d : -f 2,3 \
+    | tr -d \" \
+    | wget -i - -O fp-multiuser
+    mv fp-multiuser /bin/fp-multiuser
+    chmod 755 /bin/fp-multiuser
+    sv restart frps
+    sv restart frpsmultiuser
+else
+  echo "frp_update not enabled, frps down"
+  sv dowwn frp_update
+  sleep infinity
+fi

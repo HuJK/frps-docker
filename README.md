@@ -1,4 +1,4 @@
-# Git sync
+# frps-docker
 
 ## How to build it
 
@@ -30,8 +30,7 @@ docker buildx build --platform linux/arm64,linux/amd64 -t whojk/frps-multiuser .
 
 ## Environment Variables
 
-1. `APT_UPDATE` : `0/1`, run `apt update` at startup
-1. `APT_UPGRADE` : `0/1`, run `apt upgrade` at startup
+1. `FRP_UPDATE` : `0/1`, update frp at startup
 1. `FRPS` : `0/1`, run frps
     1. `FRPS_PORT`
     1. `FRPS_KCP_PORT` 
