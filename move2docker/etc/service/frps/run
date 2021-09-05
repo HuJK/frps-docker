@@ -1,11 +1,12 @@
 #!/bin/bash
 . /.denv
+set -x
 if [[ "$FRPS" == 1 ]]; then
   echo "frps enabled, start frps"
-  echo frps -c /etc/frp/frps.ini
+  pkill frps
   frps -c /etc/frp/frps.ini
 else
   echo "frps not enabled, frps down"
-  sv dowwn frps
+  sv down frps
   sleep infinity
 fi

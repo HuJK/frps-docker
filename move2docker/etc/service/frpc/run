@@ -1,11 +1,12 @@
 #!/bin/bash
 . /.denv
+set -x
 if [[ "$FRPC" == 1 ]]; then
   echo "frpc enabled, start frpc"
-  echo frpc -c /etc/frp/frpc.ini
+  pkill frpc
   frpc -c /etc/frp/frpc.ini
 else
   echo "frpc not enabled, frpc down"
-  sv dowwn frpc
+  sv down frpc
   sleep infinity
 fi
