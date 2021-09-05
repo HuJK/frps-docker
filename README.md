@@ -15,11 +15,16 @@ docker buildx use mybuilder_f
 
 Build
 ```bash
-docker buildx build  --platform linux/arm64 -t whojk/frps-multiuser . --output="type=docker"
+docker buildx build  --platform linux/amd64 -t whojk/frps-multiuser . --output="type=docker"
 docker push whojk/frps-multiuser
 
 #Test in localhost
 docker run -it --rm --env-file=env_file_example --name=frps whojk/frps-multiuser
+```
+
+Build and push to dockerhub
+```bash
+docker buildx build --platform linux/arm64,linux/amd64 -t whojk/frps-multiuser . --push
 ```
 
 
