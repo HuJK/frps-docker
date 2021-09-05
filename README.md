@@ -30,6 +30,7 @@ docker run -it --rm --env-file=env_file_example --name=frps whojk/frps-multiuser
 1. `FRPS` : `0/1`, run frps
     1. `FRPS_PORT`
     1. `FRPS_KCP_PORT` 
+    1. `FRPS_MULTIUSER_SERVICE_PORT`
     1. `FRP_USER_*` 
 
 
