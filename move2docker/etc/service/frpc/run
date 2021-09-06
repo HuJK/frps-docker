@@ -3,10 +3,9 @@
 set -x
 if [[ "$FRPC" == 1 ]]; then
   echo "frpc enabled, start frpc"
-  pkill frpc
-  frpc -c /etc/frp/frpc.ini
+  exec frpc -c /etc/frp/frpc.ini
 else
   echo "frpc not enabled, frpc down"
   sv down frpc
-  sleep infinity
+  exec sleep infinity
 fi

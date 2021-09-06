@@ -31,9 +31,9 @@ if [[ "$FRP_UPDATE" == 1 ]]; then
     sv restart frps
     sv restart frpc
     sv restart frpsmultiuser
-    sleep $FRP_UPDATE_INTERVAL
+    exec sleep $FRP_UPDATE_INTERVAL
 else
   echo "frp_update not enabled, frps down"
   sv down frp_update
-  sleep infinity
+  exec sleep infinity
 fi
