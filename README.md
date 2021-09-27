@@ -1,5 +1,31 @@
 # frps-docker
 
+## How to use it:
+1. Edit or copy the [env_file_example](env_file_example)
+2. `docker run -it -d --rm --env-file=env_file_example -p 0.0.0.0:7000:7000 --restart=always --name=frps whojk/frps-multiuser`
+
+## Environment Variables
+
+1. `FRP_UPDATE` : `0/1`, update frp at startup
+    `FRP_UPDATE_INTERVAL`
+1. `FRPS` : `0/1`, run frps
+    1. `FRPS_PORT`
+    1. `FRPS_KCP_PORT` 
+    1. `FRPS_MULTIUSER_SERVICE_PORT`
+    1. `FRP_USER_*`
+1. `FRPC` : `0/1`, run frpc
+    1. `FRPC_CONN`
+    1. `FRPC_CONN_PORT`
+    1. `FRPC_USER`
+    1. `FRPC_TOKEN`
+    1. `FRPC_PROTO`
+    1. `FRPC_PROXY_TYPE`
+    1. `FRPC_LOCAL_PORT`
+    1. `FRPC_REMOTE_PORT`
+
+You can checkout this example environment variables file: [env_file_example](env_file_example)
+
+
 ## How to build it
 
 Prepare build kit
@@ -26,25 +52,3 @@ Build and push to dockerhub
 ```bash
 docker buildx build --platform linux/arm64,linux/amd64 -t whojk/frps-multiuser . --push
 ```
-
-
-## Environment Variables
-
-1. `FRP_UPDATE` : `0/1`, update frp at startup
-    `FRP_UPDATE_INTERVAL`
-1. `FRPS` : `0/1`, run frps
-    1. `FRPS_PORT`
-    1. `FRPS_KCP_PORT` 
-    1. `FRPS_MULTIUSER_SERVICE_PORT`
-    1. `FRP_USER_*`
-1. `FRPC` : `0/1`, run frpc
-    1. `FRPC_CONN`
-    1. `FRPC_CONN_PORT`
-    1. `FRPC_USER`
-    1. `FRPC_TOKEN`
-    1. `FRPC_PROTO`
-    1. `FRPC_PROXY_TYPE`
-    1. `FRPC_LOCAL_PORT`
-    1. `FRPC_REMOTE_PORT`
-
-You can checkout this example environment variables file: [env_file_example](env_file_example)
