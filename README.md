@@ -2,7 +2,7 @@
 
 ## How to use it:
 1. Edit or copy the [env_file_example](env_file_example)
-2. `docker run -it -d --rm --env-file=env_file_example -p 0.0.0.0:7000:7000 --restart=always --name=frps whojk/frps-multiuser`
+2. `docker run -it -d --env-file=env_file_example -p 0.0.0.0:7000:7000 --restart=always --name=frps whojk/frps-multiuser`
 
 ## Environment Variables
 
